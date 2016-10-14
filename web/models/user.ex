@@ -4,6 +4,7 @@ defmodule Founders.User do
 
   schema "users" do
     field :email, :string
+    field :password, :string
     timestamps()
   end
 
@@ -11,7 +12,7 @@ defmodule Founders.User do
 
   def changeset(struct, params \\ %{}) do
     struct
-    |> cast(params, [:email])
-    |> validate_required([:email])
+    |> cast(params, [:email, :password])
+    |> validate_required([:email, :password])
   end
 end
