@@ -7,7 +7,7 @@ defmodule Founders.User do
     timestamps()
   end
 
-  @required_fields ~w(email)
+  @required_fields ~w(email, password)
 
   def changeset(struct, params \\ %{}) do
     struct
