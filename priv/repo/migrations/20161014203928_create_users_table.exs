@@ -4,6 +4,7 @@ defmodule Founders.Repo.Migrations.CreateUsersTable do
   def change do
     create table(:users) do
       add :email, :string
+      add :crypted_password, :string
       timestamps
     end
   end
