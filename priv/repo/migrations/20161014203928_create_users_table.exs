@@ -7,5 +7,7 @@ defmodule Founders.Repo.Migrations.CreateUsersTable do
       add :crypted_password, :string
       timestamps
     end
+    create unique_index(:users, [:email])
+
   end
 end
