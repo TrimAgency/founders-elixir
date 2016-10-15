@@ -19,5 +19,6 @@ defmodule Founders.User do
     |> unique_constraint(:email)
     |> validate_format(:email, ~r/^.+\@.+$/)
     |> validate_length(:password, min: 6)
+    |> validate_inclusion(:role, ~w(admin founder))
   end
 end

@@ -3,7 +3,11 @@ defmodule Founders.UserTest do
 
   alias Founders.User
 
-  @valid_attributes %{email: "valid@example.com", password: "password"}
+  @valid_attributes %{
+    email: "valid@example.com", 
+    password: "password",
+    role: "founder"
+  }
 
   test "changeset with valid attributes" do
     changeset = User.changeset(%User{}, @valid_attributes) 
@@ -42,6 +46,17 @@ defmodule Founders.UserTest do
       {current_value, "badpw" }
     end
     invalid_attrs = Map.get_and_update(@valid_attributes, :email, replace_password)
+
+    changeset = User.changeset %User{}, elem(invalid_attrs, 1)
+
+    refute changeset.valid?
+  end
+
+  test "changeset with an invalid role value" do
+    replace_role = fn current_value ->
+      {current_value, "fake_role" }
+    end
+    invalid_attrs = Map.get_and_update(@valid_attributes, :role, replace_role)
 
     changeset = User.changeset %User{}, elem(invalid_attrs, 1)
 
