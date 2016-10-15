@@ -4,15 +4,19 @@ defmodule Founders.User do
 
   schema "users" do
     field :email, :string
-    field :password, :string
+    field :crypted_password, :string
+    field :password, :string, virtual: true
     timestamps()
   end
 
-  @required_fields ~w(email, password)
+  @required_fields [:email, :password]
 
   def changeset(struct, params \\ %{}) do
     struct
-    |> cast(params, [:email, :password])
-    |> validate_required([:email, :password])
+    |> cast(params, @required_fields)
+    |> validate_required(@required_fields)
+    |> unique_constraint(:email)
+    |> validate_format(:email, ~r/^.+\@.+$/)
+    |> validate_length(:password, min: 6)
   end
 end
