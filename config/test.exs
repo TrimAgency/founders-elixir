@@ -17,3 +17,6 @@ config :founders, Founders.Repo,
   database: "founders_test",
   hostname: "localhost",
   pool: Ecto.Adapters.SQL.Sandbox
+
+# speed up password hashing in test environment.
+config :comeonin, :bcrypt_log_rounds, 4

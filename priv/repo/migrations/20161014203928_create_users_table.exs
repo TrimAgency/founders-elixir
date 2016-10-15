@@ -6,7 +6,7 @@ defmodule Founders.Repo.Migrations.CreateUsersTable do
 
     create table(:users) do
       add :email, :string
-      add :crypted_password, :string
+      add :hashed_password, :string
       add :role, :role, null: false, default: "founder"
       timestamps
     end
