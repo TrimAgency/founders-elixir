@@ -6,10 +6,11 @@ defmodule Founders.User do
     field :email, :string
     field :crypted_password, :string
     field :password, :string, virtual: true
+    field :role, :string
     timestamps()
   end
 
-  @required_fields [:email, :password]
+  @required_fields [:email, :password, :role]
 
   def changeset(struct, params \\ %{}) do
     struct
