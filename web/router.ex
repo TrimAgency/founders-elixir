@@ -20,7 +20,9 @@ defmodule Founders.Router do
   end
 
   # Other scopes may use custom stacks.
-  # scope "/api", Founders do
-  #   pipe_through :api
-  # end
+   scope "/api", Founders do
+     pipe_through :api
+
+     resources "/project", ProjectController, only: [:create]
+   end
 end
