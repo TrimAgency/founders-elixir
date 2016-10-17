@@ -5,7 +5,8 @@ defmodule Founders.ProjectController do
 
   def show(conn, %{"id" => id}) do
     project = Repo.get!(Project, id)
-    render(conn, "show.json", project: project)
+    conn
+    |> render("show.json", project: project)
   end
     
 

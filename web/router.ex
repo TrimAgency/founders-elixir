@@ -23,6 +23,6 @@ defmodule Founders.Router do
    scope "/api", Founders do
      pipe_through :api
 
-     resources "/project", ProjectController, only: [:index, :create]
+     resources "/project", ProjectController, only: [:show, :create]
    end
 end
