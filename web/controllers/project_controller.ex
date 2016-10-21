@@ -2,14 +2,7 @@ defmodule Founders.ProjectController do
   use Founders.Web, :controller
 
   alias Founders.Project
-
-  def show(conn, %{"id" => id}) do
-    project = Repo.get!(Project, id)
-    conn
-    |> render("show.json", project: project)
-  end
     
-
   def create(conn, %{ "project" => project_params  }) do
    changeset = Project.changeset(%Project{}, project_params)
 
@@ -17,7 +10,7 @@ defmodule Founders.ProjectController do
         {:ok, project} ->
           conn
           |> put_status(:created)
-          |> render("show.json", project: project)
+          |> render("post.json", project: project)
         {:error, changeset} ->
           conn
           |> put_status(:unprocessable_entity)
