@@ -16,7 +16,7 @@ defmodule Founders.UserController do
       {:error, changeset} -> 
         conn
           |> put_status(:unprocessable_entity) 
-          # |> render(Founders.ChangesetView, "error.json", changeset: changeset)
+          |> render(Founders.ChangesetView, "error.json", changeset: changeset)
     end
   end
 end
