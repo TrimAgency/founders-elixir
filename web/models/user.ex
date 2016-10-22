@@ -2,7 +2,7 @@ defmodule Founders.User do
 
   use Founders.Web, :model
 
-  @derive {Poison.Encoder, except: [:__meta__]}
+  @derive {Poison.Encoder, except: [:__meta__, :hashed_password]}
 
   schema "users" do
     field :email, :string
