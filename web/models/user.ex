@@ -15,6 +15,7 @@ defmodule Founders.User do
   def changeset(struct, params \\ %{}) do
     struct
     |> cast(params, [:email, :role])
+    |> validate_required(:email)
     |> unique_constraint(:email)
     |> validate_format(:email, ~r/^.+\@.+$/)
     |> validate_length(:password, min: 6)
