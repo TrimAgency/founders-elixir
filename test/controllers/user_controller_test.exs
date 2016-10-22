@@ -24,7 +24,7 @@ defmodule Founders.UserControllerTest do
 
   test "persists a user in the database", %{conn: conn} do
     conn = ConTest.set_headers conn
-    conn = post conn, user_path(conn, :create), user: @valid_attrs
+    post conn, user_path(conn, :create), user: @valid_attrs
 
     user = Repo.get_by(User, email: @valid_attrs[:email])
     assert user.email == @valid_attrs[:email]
