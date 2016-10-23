@@ -5,6 +5,11 @@ defmodule Founders.ProjectController do
 
   plug :scrub_params, "project" when action in [:create]
 
+  def show(conn, %{ "id" => id }) do
+    project = Repo.get!(Project, id)
+    render(conn, "show.json", project: project)
+  end
+
   def create(conn, %{ "project" => project_params  }) do
    changeset = Project.changeset(%Project{}, project_params)
 
