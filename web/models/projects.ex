@@ -1,5 +1,7 @@
 defmodule Founders.Project do
   use Founders.Web, :model
+  
+  @derive {Poison.Encoder, except: [:__meta__]}
 
   schema "projects" do
     field :name, :string
@@ -10,9 +12,10 @@ defmodule Founders.Project do
   end
 
   @required_fields ~w(name project_url email)
+  @optional_fields ~w()
 
-  def changeset(model, params \\ :empty) do
+  def changeset(model, params \\ nil) do
     model
-    |> cast(params, @required_fields)
+    |> cast(params, @required_fields, @optional_fields)
   end
 end
