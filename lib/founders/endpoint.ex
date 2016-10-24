@@ -37,6 +37,7 @@ defmodule Founders.Endpoint do
     store: :cookie,
     key: "_founders_key",
     signing_salt: "kdV0Hi3p"
-
+    
+  plug CORSPlug
   plug Founders.Router
 end
